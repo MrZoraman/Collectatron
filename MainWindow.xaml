@@ -5,8 +5,58 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Collectatron"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Collectatron" Height="600" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
+        <Rectangle Margin="5" Fill="LightGray"/>
+
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Margin="5">Title</TextBox>
+
+            <TextBox Grid.Column="0" Grid.Row="1" Margin="5">Brand</TextBox>
+            <TextBox Grid.Column="1" Grid.Row="1" Margin="5">Price</TextBox>
+            <TextBox Grid.Column="2" Grid.Row="1" Margin="5">Value Type</TextBox>
+
+            <TextBox Grid.Column="0" Grid.Row="2" Margin="5">Year</TextBox>
+
+            <TextBox Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Margin="5">Comments</TextBox>
+        </Grid>
+
+        <ScrollViewer Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+            <StackPanel>
+                <Rectangle Height="30" Fill="Red" Margin="5"></Rectangle>
+                <Rectangle Height="30" Fill="Green" Margin="5"></Rectangle>
+                <Rectangle Height="30" Fill="Blue" Margin="5"></Rectangle>
+                <Rectangle Height="30" Fill="Red" Margin="5"></Rectangle>
+                <Rectangle Height="30" Fill="Green" Margin="5"></Rectangle>
+                <Rectangle Height="30" Fill="Blue" Margin="5"></Rectangle>
+                <Rectangle Height="30" Fill="Red" Margin="5"></Rectangle>
+                <Rectangle Height="30" Fill="Green" Margin="5"></Rectangle>
+                <Rectangle Height="30" Fill="Blue" Margin="5"></Rectangle>
+                <Rectangle Height="30" Fill="Red" Margin="5"></Rectangle>
+                <Rectangle Height="30" Fill="Green" Margin="5"></Rectangle>
+                <Rectangle Height="30" Fill="Blue" Margin="5"></Rectangle>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>
