@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace Collectatron
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CollectionListItem.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CollectionListItem : UserControl
     {
-        public MainWindow()
+        public CollectionListItem()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
         }
     }
 }
