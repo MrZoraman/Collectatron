@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Collectatron"
              mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=local:CollectionListItemViewModel, IsDesignTimeCreatable=True}"
              d:DesignHeight="100" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -21,9 +22,9 @@
         <Rectangle Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Fill="Gray" Margin="5"/>
 
         <Label Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center">Title:</Label>
-        <TextBox Grid.Column="2" Grid.Row="0" Margin="5" Height="25"/>
+        <Label Grid.Column="2" Grid.Row="0" Margin="5" Height="25" Content="{Binding Title}"/>
         <Button Grid.Column="3" Grid.Row="0" Width="50" Margin="5">RM</Button>
 
-        <Label Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">ID</Label>
+        <Label Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding Id, Mode=OneTime}"/>
     </Grid>
 </UserControl>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Collectatron
@@ -7,10 +8,20 @@ namespace Collectatron
     {
         private List<CollectionItem> _items = new();
 
+        public string FileLocation { get; set; }
+
         public void LoadItems()
         {
             var item1 = AddItem();
             item1.Name = "Item 1";
+        }
+
+        public void SaveItems()
+        {
+            if (string.IsNullOrWhiteSpace(FileLocation))
+            {
+                throw new InvalidOperationException("No file was ever specified!");
+            }
         }
 
         public CollectionItem AddItem()
@@ -18,6 +29,11 @@ namespace Collectatron
             var item = new CollectionItem(this, GetNextId());
             _items.Add(item);
             return item;
+        }
+
+        public void Clear()
+        {
+            _items.Clear();
         }
 
         private int GetNextId()

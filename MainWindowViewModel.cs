@@ -1,10 +1,30 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Collectatron
 {
-    internal class MainWindowViewModel
+    internal class MainWindowViewModel : INotifyPropertyChanged
     {
-        public string Title { get; set; } = string.Empty;
+        public MainWindowViewModel(Collection collection)
+        {
+            LoadCommand = new LoadCommand(collection);
+            NewCommand = new NewCommand(collection);
+            AddCommand = new AddCommand(collection, CollectionItems);
+        }
+
+        private CollectionListItemViewModel? _selectedItem;
+
+        public string Title
+        {
+            get => SelectedItem?.Title ?? "??";
+            set
+            {
+                if (SelectedItem != null)
+                {
+                    SelectedItem.Title = value;
+                }
+            }
+        }
 
         public string Brand { get; set; } = string.Empty;
 
@@ -12,12 +32,25 @@ namespace Collectatron
 
         public string EstimatedValue { get; set; } = string.Empty;
 
-        public ObservableCollection<CollectionListItemViewModel> CollectionItems { get; set; } = new()
+        public ObservableCollection<CollectionListItemViewModel> CollectionItems { get; set; } = new();
+
+        public CollectionListItemViewModel? SelectedItem
         {
-            new CollectionListItemViewModel(),
-            new CollectionListItemViewModel(),
-            new CollectionListItemViewModel(),
-            new CollectionListItemViewModel()
-        };
+            get => _selectedItem;
+            set
+            {
+                _selectedItem = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedItem)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Title)));
+            }
+        }
+
+        public LoadCommand LoadCommand { get; }
+
+        public NewCommand NewCommand { get; }
+
+        public AddCommand AddCommand { get; }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

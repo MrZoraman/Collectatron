@@ -23,7 +23,7 @@ namespace Collectatron
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
+            DataContext = new MainWindowViewModel(new Collection());
         }
     }
 }

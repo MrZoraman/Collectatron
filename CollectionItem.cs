@@ -6,13 +6,15 @@
         {
             _collection = collection;
             Id = id;
+
+            Name = "Item " + Id;
         }
 
         private readonly Collection _collection;
 
-        public int Id { get;} = 0;
+        public int Id { get; }
 
-        public string Name { get; set; } = string.Empty;
+        public string Name { get; set; }
 
         public decimal? PricePaid { get; set; }
 
