@@ -9,7 +9,7 @@ namespace Collectatron
         {
             LoadCommand = new LoadCommand(collection);
             NewCommand = new NewCommand(collection);
-            AddCommand = new AddCommand(collection, CollectionItems);
+            AddCommand = new AddCommand(collection, this);
             SaveCommand = new SaveCommand(collection);
         }
 

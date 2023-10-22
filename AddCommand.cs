@@ -7,12 +7,12 @@ namespace Collectatron
     internal class AddCommand : ICommand
     {
         private readonly Collection _collection;
-        private readonly ObservableCollection<CollectionListItemViewModel> _itemList;
+        private readonly MainWindowViewModel _mainWindowViewModel;
 
-        public AddCommand(Collection collection, ObservableCollection<CollectionListItemViewModel> itemList)
+        public AddCommand(Collection collection, MainWindowViewModel mainWindowViewModel)
         {
             _collection = collection;
-            _itemList = itemList;
+            _mainWindowViewModel = mainWindowViewModel;
         }
 
         public bool CanExecute(object? parameter)
@@ -23,7 +23,10 @@ namespace Collectatron
         public void Execute(object? parameter)
         {
             var item = _collection.AddItem();
-            _itemList.Add(new CollectionListItemViewModel(item, _itemList));
+            var collectionItemViewModel = new CollectionListItemViewModel(item, _mainWindowViewModel.CollectionItems);
+            _mainWindowViewModel.CollectionItems.Add(collectionItemViewModel);
+
+            _mainWindowViewModel.SelectedItem = collectionItemViewModel;
         }
 
         public event EventHandler? CanExecuteChanged;
