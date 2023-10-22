@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Collectatron
@@ -24,8 +25,13 @@ namespace Collectatron
 
         public void Execute(object? parameter)
         {
-            _itemList.Remove(_item);
-            _item.RemoveFromCollection();
+            var result = MessageBox.Show("Are you sure?", "Delete Item", MessageBoxButton.YesNo, MessageBoxImage.Warning,
+                MessageBoxResult.No);
+            if (result == MessageBoxResult.Yes)
+            {
+                _itemList.Remove(_item);
+                _item.RemoveFromCollection();
+            }
         }
     }
 }
