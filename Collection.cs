@@ -6,16 +6,17 @@ using System.Text.Json;
 
 namespace Collectatron
 {
-    internal class Collection
+    public class Collection
     {
         private List<CollectionItem> _items = new();
 
         public const string ImagesFolder = "Images";
 
-        public string FileLocation { get; set; }
+        public string FileLocation { get; }
 
-        public void LoadItems()
+        public Collection(string fileLocation)
         {
+            FileLocation = fileLocation;
         }
 
         public void SaveItems()

@@ -5,7 +5,7 @@ using System.Windows.Media.Imaging;
 
 namespace Collectatron
 {
-    internal class CollectionListItemViewModel : INotifyPropertyChanged
+    public class CollectionListItemViewModel : INotifyPropertyChanged
     {
         public CollectionListItemViewModel(CollectionItem item, ObservableCollection<CollectionListItemViewModel> itemList)
         {

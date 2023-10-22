@@ -2,7 +2,7 @@
 
 namespace Collectatron
 {
-    internal class CollectionItem
+    public class CollectionItem
     {
         private const int MaxImageFolders = 128;
 

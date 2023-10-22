@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace Collectatron
 {
-    internal class SaveCommand : ICommand
+    public class SaveCommand : ICommand
     {
         private readonly Collection _collection;
 

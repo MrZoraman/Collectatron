@@ -10,12 +10,18 @@
     <Compile Update="CollectionListItem.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="OpenOrNewDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="CollectionListItem.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="OpenOrNewDialog.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

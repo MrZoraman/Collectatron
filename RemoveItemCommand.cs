@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace Collectatron
 {
-    internal class RemoveItemCommand : ICommand
+    public class RemoveItemCommand : ICommand
     {
         private readonly CollectionListItemViewModel _item;
         private readonly ObservableCollection<CollectionListItemViewModel> _itemList;

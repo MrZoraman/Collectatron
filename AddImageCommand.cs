@@ -8,7 +8,7 @@ using System.Windows.Media.Imaging;
 
 namespace Collectatron
 {
-    internal class AddImageCommand : ICommand
+    public class AddImageCommand : ICommand
     {
         public event EventHandler? CanExecuteChanged;
 

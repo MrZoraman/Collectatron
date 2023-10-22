@@ -4,12 +4,10 @@ using System.Windows.Media.Imaging;
 
 namespace Collectatron
 {
-    internal class MainWindowViewModel : INotifyPropertyChanged
+    public class MainWindowViewModel : INotifyPropertyChanged
     {
         public MainWindowViewModel(Collection collection)
         {
-            LoadCommand = new LoadCommand(collection);
-            NewCommand = new NewCommand(collection);
             AddCommand = new AddCommand(collection, this);
             SaveCommand = new SaveCommand(collection);
             AddImageCommand = new AddImageCommand(this);
@@ -122,10 +120,6 @@ namespace Collectatron
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Image)));
             }
         }
-
-        public LoadCommand LoadCommand { get; }
-
-        public NewCommand NewCommand { get; }
 
         public AddCommand AddCommand { get; }
 
