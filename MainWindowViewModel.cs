@@ -17,7 +17,7 @@ namespace Collectatron
 
         public string Title
         {
-            get => SelectedItem?.Title ?? "??";
+            get => SelectedItem?.Title ?? "No item selected.";
             set
             {
                 if (SelectedItem != null)
@@ -27,11 +27,77 @@ namespace Collectatron
             }
         }
 
-        public string Brand { get; set; } = string.Empty;
+        public string? Brand
+        {
+            get => SelectedItem?.Brand;
+            set
+            {
+                if (SelectedItem != null)
+                {
+                    SelectedItem.Brand = value;
+                }
+            }
+        }
 
-        public string PricePaid { get; set; } = string.Empty;
+        public string? PricePaid
+        {
+            get => SelectedItem?.PricePaid;
+            set
+            {
+                if (SelectedItem != null)
+                {
+                    SelectedItem.PricePaid = value;
+                }
+            }
+        }
 
-        public string EstimatedValue { get; set; } = string.Empty;
+        public string? Year
+        {
+            get => SelectedItem?.Year;
+            set
+            {
+                if (SelectedItem != null)
+                {
+                    SelectedItem.Year = value;
+                }
+            }
+        }
+
+        public string? EstimatedValue
+        {
+            get => SelectedItem?.EstimatedValue;
+            set
+            {
+                if (SelectedItem != null)
+                {
+                    SelectedItem.EstimatedValue = value;
+                }
+            }
+        }
+
+        public string? Location
+        {
+            get => SelectedItem?.Location;
+            set
+            {
+                if (SelectedItem != null)
+                {
+                    SelectedItem.Location = value;
+                }
+            }
+        }
+
+        public string? Comments
+        {
+            get => SelectedItem?.Comments;
+            set
+            {
+                if (SelectedItem != null)
+                {
+                    SelectedItem.Comments = value;
+                }
+            }
+        }
 
         public ObservableCollection<CollectionListItemViewModel> CollectionItems { get; set; } = new();
 
@@ -43,6 +109,12 @@ namespace Collectatron
                 _selectedItem = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedItem)));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Title)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Brand)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PricePaid)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Year)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EstimatedValue)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Location)));
+
             }
         }
 

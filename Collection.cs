@@ -13,7 +13,7 @@ namespace Collectatron
         public void LoadItems()
         {
             var item1 = AddItem();
-            item1.Name = "Item 1";
+            item1.Title = "Item 1";
         }
 
         public void SaveItems()
