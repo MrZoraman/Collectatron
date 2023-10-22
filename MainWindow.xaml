@@ -42,6 +42,16 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
+                <Grid.Style>
+                    <Style TargetType="{x:Type Grid}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedItem}" Value="{x:Null}">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+
                 <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right">Title:</Label>
                 <TextBox x:Name="TxtTitle" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" Margin="5" Text="{Binding Title, Mode=TwoWay}"/>
 
