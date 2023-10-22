@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
 
 namespace Collectatron
 {
@@ -23,6 +24,23 @@ namespace Collectatron
             {
                 throw new InvalidOperationException("No file was ever specified!");
             }
+
+            var jsonItemList = _items.Select(i => new JsonCollectionItem
+            {
+                Id = i.Id,
+                Title = i.Title,
+                Brand = i.Brand,
+                PricePaid = i.PricePaid,
+                EstimatedValue = i.EstimatedValue,
+                Year = i.Year,
+                Location = i.Location,
+                Comments = i.Comments,
+                ImageExtension = i.ImageExtension
+            }).ToList();
+
+            var jsonString = JsonSerializer.Serialize(jsonItemList);
+
+            File.WriteAllText(FileLocation, jsonString);
         }
 
         public CollectionItem AddItem()

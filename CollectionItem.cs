@@ -32,7 +32,7 @@ namespace Collectatron
 
         public string? Comments { get; set; }
 
-        public string ImageExtension { get; set; }
+        public string? ImageExtension { get; set; }
 
         public string GetImagePath()
         {

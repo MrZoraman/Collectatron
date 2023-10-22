@@ -45,6 +45,7 @@ namespace Collectatron
                     var extension = Path.GetExtension(dialog.FileName);
                     var imagePath = Path.Combine(path, item.Id + extension);
                     File.Copy(dialog.FileName, imagePath);
+                    item.SetExtension(extension);
 
                     item.Image = new BitmapImage(new Uri(imagePath));
                     _viewModel.UpdateImage();

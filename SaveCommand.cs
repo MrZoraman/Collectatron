@@ -23,6 +23,9 @@ namespace Collectatron
             try
             {
                 _collection.SaveItems();
+
+                MessageBox.Show("Saved to " + _collection.FileLocation, "Save success.", MessageBoxButton.OK,
+                    MessageBoxImage.Information);
             }
             catch (Exception e)
             {
