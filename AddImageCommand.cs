@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
@@ -40,7 +41,12 @@ namespace Collectatron
             {
                 try
                 {
-                    item.Image = new BitmapImage(new Uri(dialog.FileName));
+                    var path = item.GetImagePath();
+                    var extension = Path.GetExtension(dialog.FileName);
+                    var imagePath = Path.Combine(path, item.Id + extension);
+                    File.Copy(dialog.FileName, imagePath);
+
+                    item.Image = new BitmapImage(new Uri(imagePath));
                     _viewModel.UpdateImage();
                 }
                 catch (Exception e)

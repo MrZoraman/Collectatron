@@ -160,5 +160,15 @@ namespace Collectatron
         {
             _item.RemoveFromCollection();
         }
+
+        public string GetImagePath()
+        {
+            return _item.GetImagePath();
+        }
+
+        public void SetExtension(string extension)
+        {
+            _item.ImageExtension = extension;
+        }
     }
 }

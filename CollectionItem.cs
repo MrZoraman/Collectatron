@@ -1,7 +1,11 @@
-﻿namespace Collectatron
+﻿using System.IO;
+
+namespace Collectatron
 {
     internal class CollectionItem
     {
+        private const int MaxImageFolders = 128;
+
         public CollectionItem(Collection collection, int id)
         {
             _collection = collection;
@@ -27,6 +31,18 @@
         public string? Location { get; set; }
 
         public string? Comments { get; set; }
+
+        public string ImageExtension { get; set; }
+
+        public string GetImagePath()
+        {
+            var folder = Id % MaxImageFolders;
+
+            var path = Path.Combine(_collection.GetImagesLocation(), folder.ToString());
+            Directory.CreateDirectory(path);
+
+            return path;
+        }
 
         public void RemoveFromCollection()
         {

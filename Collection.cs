@@ -13,11 +13,6 @@ namespace Collectatron
 
         public string FileLocation { get; set; }
 
-        public Collection()
-        {
-            Directory.CreateDirectory(ImagesFolder);
-        }
-
         public void LoadItems()
         {
         }
@@ -45,6 +40,20 @@ namespace Collectatron
         public void Clear()
         {
             _items.Clear();
+        }
+
+        public string GetImagesLocation()
+        {
+            if (string.IsNullOrWhiteSpace(FileLocation))
+            {
+                throw new InvalidOperationException("No file was ever specified!");
+            }
+
+            var ext = Path.GetExtension(FileLocation);
+
+            var path = Path.Combine(FileLocation[..^ext.Length], ImagesFolder);
+            Directory.CreateDirectory(path);
+            return path;
         }
 
         private int GetNextId()
