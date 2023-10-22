@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Collectatron
@@ -8,12 +9,17 @@ namespace Collectatron
     {
         private List<CollectionItem> _items = new();
 
+        public const string ImagesFolder = "Images";
+
         public string FileLocation { get; set; }
+
+        public Collection()
+        {
+            Directory.CreateDirectory(ImagesFolder);
+        }
 
         public void LoadItems()
         {
-            var item1 = AddItem();
-            item1.Title = "Item 1";
         }
 
         public void SaveItems()

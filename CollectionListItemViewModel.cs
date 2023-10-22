@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace Collectatron
 {
@@ -16,6 +16,8 @@ namespace Collectatron
         private readonly CollectionItem _item;
 
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        private BitmapImage? _image;
 
         public string Title
         {
@@ -137,6 +139,16 @@ namespace Collectatron
                     ? null
                     : value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Comments)));
+            }
+        }
+
+        public BitmapImage? Image
+        {
+            get => _image;
+            set
+            {
+                _image = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Image)));
             }
         }
 

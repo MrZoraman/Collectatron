@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Media.Imaging;
 
 namespace Collectatron
 {
@@ -11,6 +12,7 @@ namespace Collectatron
             NewCommand = new NewCommand(collection);
             AddCommand = new AddCommand(collection, this);
             SaveCommand = new SaveCommand(collection);
+            AddImageCommand = new AddImageCommand(this);
         }
 
         private CollectionListItemViewModel? _selectedItem;
@@ -99,6 +101,8 @@ namespace Collectatron
             }
         }
 
+        public BitmapImage? Image => SelectedItem?.Image;
+
         public ObservableCollection<CollectionListItemViewModel> CollectionItems { get; set; } = new();
 
         public CollectionListItemViewModel? SelectedItem
@@ -114,7 +118,8 @@ namespace Collectatron
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Year)));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EstimatedValue)));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Location)));
-
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Comments)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Image)));
             }
         }
 
@@ -126,6 +131,13 @@ namespace Collectatron
 
         public SaveCommand SaveCommand { get; }
 
+        public AddImageCommand AddImageCommand { get; }
+
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        public void UpdateImage()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Image)));
+        }
     }
 }

@@ -14,6 +14,7 @@
             <MenuItem Header="Export"/>
             <MenuItem Header="New" Command="{Binding NewCommand}"/>
             <MenuItem Header="Add" Command="{Binding AddCommand}"/>
+            <MenuItem Header="Image" Command="{Binding AddImageCommand}" CommandParameter="{Binding SelectedItem}"/>
         </Menu>
 
         <Grid>
@@ -26,7 +27,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Rectangle Margin="5" Fill="LightGray"/>
+            <Image Margin="5" Source="{Binding Image}"/>
 
             <Grid Grid.Row="0" Grid.Column="1">
                 <Grid.ColumnDefinitions>
