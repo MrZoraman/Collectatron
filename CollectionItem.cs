@@ -4,8 +4,6 @@ namespace Collectatron
 {
     public class CollectionItem
     {
-        private const int MaxImageFolders = 128;
-
         public CollectionItem(Collection collection, int id)
         {
             _collection = collection;
@@ -36,9 +34,29 @@ namespace Collectatron
 
         public string GetImagePath()
         {
-            var folder = Id % MaxImageFolders;
+            string folder;
+            if (Id < 100)
+            {
+                folder = "0-99";
+            }
+            else if (Id < 200)
+            {
+                folder = "100-199";
+            }
+            else if (Id < 300)
+            {
+                folder = "200-299";
+            }
+            else if (Id < 400)
+            {
+                folder = "300-399";
+            }
+            else
+            {
+                folder = "Over 400";
+            }
 
-            var path = Path.Combine(_collection.GetImagesLocation(), folder.ToString());
+            var path = Path.Combine(_collection.GetImagesLocation(), folder);
             Directory.CreateDirectory(path);
 
             return path;
