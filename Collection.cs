@@ -31,6 +31,11 @@ namespace Collectatron
             return item;
         }
 
+        public void RemoveItem(CollectionItem item)
+        {
+            _items.Remove(item);
+        }
+
         public void Clear()
         {
             _items.Clear();

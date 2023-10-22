@@ -23,5 +23,10 @@
         public int? Year { get; set; }
 
         public string Comments { get; set; } = string.Empty;
+
+        public void RemoveFromCollection()
+        {
+            _collection.RemoveItem(this);
+        }
     }
 }

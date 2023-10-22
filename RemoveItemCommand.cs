@@ -4,16 +4,18 @@ using System.Windows.Input;
 
 namespace Collectatron
 {
-    internal class AddCommand : ICommand
+    internal class RemoveItemCommand : ICommand
     {
-        private readonly Collection _collection;
+        private readonly CollectionListItemViewModel _item;
         private readonly ObservableCollection<CollectionListItemViewModel> _itemList;
 
-        public AddCommand(Collection collection, ObservableCollection<CollectionListItemViewModel> itemList)
+        public RemoveItemCommand(CollectionListItemViewModel item, ObservableCollection<CollectionListItemViewModel> itemList)
         {
-            _collection = collection;
+            _item = item;
             _itemList = itemList;
         }
+
+        public event EventHandler? CanExecuteChanged;
 
         public bool CanExecute(object? parameter)
         {
@@ -22,10 +24,8 @@ namespace Collectatron
 
         public void Execute(object? parameter)
         {
-            var item = _collection.AddItem();
-            _itemList.Add(new CollectionListItemViewModel(item, _itemList));
+            _itemList.Remove(_item);
+            _item.RemoveFromCollection();
         }
-
-        public event EventHandler? CanExecuteChanged;
     }
 }

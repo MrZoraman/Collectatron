@@ -1,12 +1,14 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Collectatron
 {
     internal class CollectionListItemViewModel : INotifyPropertyChanged
     {
-        public CollectionListItemViewModel(CollectionItem item)
+        public CollectionListItemViewModel(CollectionItem item, ObservableCollection<CollectionListItemViewModel> itemList)
         {
             _item = item;
+            RemoveItemCommand = new RemoveItemCommand(this, itemList);
         }
 
         private readonly CollectionItem _item;
@@ -24,5 +26,12 @@ namespace Collectatron
         }
 
         public int Id => _item.Id;
+
+        public RemoveItemCommand RemoveItemCommand { get; }
+
+        public void RemoveFromCollection()
+        {
+            _item.RemoveFromCollection();
+        }
     }
 }

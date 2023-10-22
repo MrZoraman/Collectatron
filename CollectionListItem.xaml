@@ -7,6 +7,19 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=local:CollectionListItemViewModel, IsDesignTimeCreatable=True}"
              d:DesignHeight="100" d:DesignWidth="800">
+    <UserControl.Resources>
+        <DrawingImage x:Key="trash_bin_svgrepo_comDrawingImage">
+            <DrawingImage.Drawing>
+                <DrawingGroup ClipGeometry="M0,0 V50 H50 V0 H0 Z">
+                    <GeometryDrawing Brush="#FF231F20" Geometry="F1 M50,50z M0,0z M10.289,14.211L13.391,14.211 14.835,39.65C14.864,40.179,15.303,40.593,15.833,40.593L34.766,40.593C35.296,40.593,35.735,40.178,35.764,39.649L37.185,14.211 40.289,14.211C40.842,14.211 41.289,13.763 41.289,13.211 41.289,12.659 40.842,12.211 40.289,12.211L36.548,12.211C36.493,12.211 36.445,12.234 36.392,12.242 36.34,12.234 36.292,12.211 36.239,12.211L30.993,12.211 30.993,9.594C30.993,9.042,30.546,8.594,29.993,8.594L20.584,8.594C20.031,8.594,19.584,9.042,19.584,9.594L19.584,12.211 14.336,12.211C14.29,12.211 14.249,12.232 14.204,12.238 14.158,12.231 14.117,12.211 14.069,12.211L10.29,12.211C9.73699999999999,12.211 9.29,12.659 9.29,13.211 9.29,13.763 9.736,14.211 10.289,14.211z M21.584,10.594L28.993,10.594 28.993,12.211 21.584,12.211 21.584,10.594z M35.182,14.211L33.82,38.594 16.778,38.594 15.394,14.211 35.182,14.211z" />
+                    <GeometryDrawing Brush="#FF231F20" Geometry="F1 M50,50z M0,0z M20.337,36.719C20.357,36.719 20.375,36.719 20.395,36.718 20.947,36.687 21.368,36.214 21.336,35.663L20.284,17.128C20.253,16.576 19.767,16.161 19.229,16.186 18.677,16.217 18.256,16.69 18.288,17.241L19.34,35.776C19.37,36.308,19.811,36.719,20.337,36.719z" />
+                    <GeometryDrawing Brush="#FF231F20" Geometry="F1 M50,50z M0,0z M30.147,36.718C30.167,36.719 30.185,36.719 30.205,36.719 30.731,36.719 31.172,36.308 31.202,35.776L32.254,17.241C32.285,16.69 31.864,16.217 31.313,16.186 30.77,16.163 30.29,16.576 30.258,17.128L29.206,35.663C29.175,36.214,29.596,36.687,30.147,36.718z" />
+                    <GeometryDrawing Brush="#FF231F20" Geometry="F1 M50,50z M0,0z M25.289,36.719C25.842,36.719,26.289,36.271,26.289,35.719L26.289,17.184C26.289,16.632 25.842,16.184 25.289,16.184 24.736,16.184 24.289,16.632 24.289,17.184L24.289,35.719C24.289,36.271,24.736,36.719,25.289,36.719z" />
+                </DrawingGroup>
+            </DrawingImage.Drawing>
+        </DrawingImage>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
@@ -23,7 +36,9 @@
 
         <Label Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center">Title:</Label>
         <Label Grid.Column="2" Grid.Row="0" Margin="5" Height="25" Content="{Binding Title}"/>
-        <Button Grid.Column="3" Grid.Row="0" Width="50" Margin="5">RM</Button>
+        <Button Grid.Column="3" Grid.Row="0" Width="50" Margin="5" Command="{Binding RemoveItemCommand}">
+            <Image Source="{StaticResource trash_bin_svgrepo_comDrawingImage}"/>
+        </Button>
 
         <Label Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding Id, Mode=OneTime}"/>
     </Grid>
