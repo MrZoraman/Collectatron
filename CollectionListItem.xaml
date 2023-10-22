@@ -23,7 +23,6 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
@@ -34,12 +33,11 @@
 
         <Rectangle Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Fill="Gray" Margin="5"/>
 
-        <Label Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center">Title:</Label>
-        <Label Grid.Column="2" Grid.Row="0" Margin="5" Height="25" Content="{Binding Title}"/>
-        <Button Grid.Column="3" Grid.Row="0" Width="50" Margin="5" Command="{Binding RemoveItemCommand}">
+        <Label Grid.Column="1" Grid.Row="0" Margin="5" Height="25" Content="{Binding Title}"/>
+        <Button Grid.Column="2" Grid.Row="0" Width="50" Margin="5" Command="{Binding RemoveItemCommand}">
             <Image Source="{StaticResource trash_bin_svgrepo_comDrawingImage}"/>
         </Button>
 
-        <Label Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding Id, Mode=OneTime}"/>
+        <Label Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding Id, Mode=OneTime}"/>
     </Grid>
 </UserControl>

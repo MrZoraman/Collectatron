@@ -10,6 +10,7 @@ namespace Collectatron
             LoadCommand = new LoadCommand(collection);
             NewCommand = new NewCommand(collection);
             AddCommand = new AddCommand(collection, CollectionItems);
+            SaveCommand = new SaveCommand(collection);
         }
 
         private CollectionListItemViewModel? _selectedItem;
@@ -50,6 +51,8 @@ namespace Collectatron
         public NewCommand NewCommand { get; }
 
         public AddCommand AddCommand { get; }
+
+        public SaveCommand SaveCommand { get; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
     }

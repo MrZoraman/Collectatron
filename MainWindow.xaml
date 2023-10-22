@@ -10,6 +10,7 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Open" Command="{Binding LoadCommand}"/>
+            <MenuItem Header="Save" Command="{Binding SaveCommand}"/>
             <MenuItem Header="Export"/>
             <MenuItem Header="New" Command="{Binding NewCommand}"/>
             <MenuItem Header="Add" Command="{Binding AddCommand}"/>
@@ -38,6 +39,7 @@
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
@@ -50,11 +52,17 @@
                 <TextBox Grid.Column="3" Grid.Row="1" Margin="5"/>
 
                 <Label Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right">Year:</Label>
-                <TextBox Grid.Column="1" Grid.Row="2" Margin="5">Year</TextBox>
+                <TextBox Grid.Column="1" Grid.Row="2" Margin="5"/>
                 <Label Grid.Column="2" Grid.Row="2" HorizontalAlignment="Right">Est. Value:</Label>
                 <TextBox Grid.Column="3" Grid.Row="2" Margin="5"/>
 
-                <TextBox Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="4" Margin="5">Comments</TextBox>
+
+                <Label Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right">Location:</Label>
+                <TextBox Grid.Column="1" Grid.Row="3" Margin="5"/>
+                <Label Grid.Column="2" Grid.Row="3" HorizontalAlignment="Right">Category:</Label>
+                <TextBox Grid.Column="3" Grid.Row="3" Margin="5"/>
+
+                <TextBox Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="4" Margin="5">Comments</TextBox>
             </Grid>
 
             <ListView Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding CollectionItems}" SelectedItem="{Binding SelectedItem}">
