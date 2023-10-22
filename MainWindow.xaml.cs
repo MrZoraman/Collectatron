@@ -25,5 +25,16 @@ namespace Collectatron
             InitializeComponent();
             DataContext = viewModel;
         }
+
+        private void AddMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            TxtTitle.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
+            TxtBrand.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
+            TxtPrice.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
+            TxtYear.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
+            TxtEstValue.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
+            TxtLocation.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
+            TxtComments.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
+        }
     }
 }
