@@ -11,6 +11,11 @@ namespace Collectatron
             AddCommand = new AddCommand(collection, this);
             SaveCommand = new SaveCommand(collection);
             AddImageCommand = new AddImageCommand(this);
+
+            foreach (var item in collection.Items)
+            {
+                CollectionItems.Add(new CollectionListItemViewModel(item, CollectionItems));
+            }
         }
 
         private CollectionListItemViewModel? _selectedItem;

@@ -35,6 +35,7 @@ namespace Collectatron
             if (dialog.ShowDialog() == true)
             {
                 var collection = new Collection(dialog.FileName);
+                collection.LoadItems();
                 var window = new MainWindow(new MainWindowViewModel(collection));
                 window.Show();
                 Close();

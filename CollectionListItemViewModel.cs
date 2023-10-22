@@ -1,5 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
@@ -11,6 +13,12 @@ namespace Collectatron
         {
             _item = item;
             RemoveItemCommand = new RemoveItemCommand(this, itemList);
+
+            var imagePath = Path.Combine(item.GetImagePath(), item.Id + item.ImageExtension);
+            if (File.Exists(imagePath))
+            {
+                _image = new BitmapImage(new Uri(imagePath));
+            }
         }
 
         private readonly CollectionItem _item;

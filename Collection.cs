@@ -8,7 +8,7 @@ namespace Collectatron
 {
     public class Collection
     {
-        private List<CollectionItem> _items = new();
+        private readonly List<CollectionItem> _items = new();
 
         public const string ImagesFolder = "Images";
 
@@ -17,6 +17,41 @@ namespace Collectatron
         public Collection(string fileLocation)
         {
             FileLocation = fileLocation;
+        }
+
+        public IReadOnlyCollection<CollectionItem> Items => _items.AsReadOnly();
+
+        public void LoadItems()
+        {
+            var json = File.ReadAllText(FileLocation);
+            var records = JsonSerializer.Deserialize<JsonCollectionItem[]>(json);
+            if (records != null)
+            {
+                foreach (var record in records)
+                {
+                    var id = record.Id ?? throw new Exception("Found a record without an id!");
+
+                    if (_items.Any(i => i.Id == id))
+                    {
+                        throw new Exception("Duplicate id: " + id);
+                    }
+
+                    var title = record.Title ?? "Item " + id + " (fallback)";
+                    var item = new CollectionItem(this, id)
+                    {
+                        Title = title,
+                        Brand = record.Brand,
+                        PricePaid = record.PricePaid,
+                        EstimatedValue = record.EstimatedValue,
+                        Year = record.Year,
+                        Location = record.Location,
+                        Comments = record.Comments,
+                        ImageExtension = record.ImageExtension
+                    };
+
+                    _items.Add(item);
+                }
+            }
         }
 
         public void SaveItems()
@@ -54,11 +89,6 @@ namespace Collectatron
         public void RemoveItem(CollectionItem item)
         {
             _items.Remove(item);
-        }
-
-        public void Clear()
-        {
-            _items.Clear();
         }
 
         public string GetImagesLocation()
