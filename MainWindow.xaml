@@ -10,7 +10,7 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Save" Command="{Binding SaveCommand}"/>
-            <MenuItem Header="Export"/>
+            <!-- <MenuItem Header="Export"/> -->
             <MenuItem x:Name="AddMenuItem" Header="Add" Command="{Binding AddCommand}" Click="AddMenuItem_OnClick"/>
             <MenuItem Header="Image" Command="{Binding AddImageCommand}" CommandParameter="{Binding SelectedItem}"/>
         </Menu>
